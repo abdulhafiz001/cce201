@@ -1,0 +1,25 @@
+<?php
+
+include 'connection.php';
+
+if(isset($_POST["send"])){
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
+
+    $sql = "INSERT INTO rent_m(Name, Email, Phone, Subject, message)VALUES('$name', '$email', '$phone', '$subject', '$message')";
+    $execute = mysqli_query($conn, $sql);
+
+    if ($execute){
+        header('location:index.php');
+        echo"<script> alert('message sent successfully');</script>";
+    }
+    else{
+        echo "failed";
+    }
+}
+
+
+?>
